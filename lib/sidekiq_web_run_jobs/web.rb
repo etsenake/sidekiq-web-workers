@@ -1,15 +1,13 @@
 require 'sidekiq_web_run_jobs'
 require_relative 'job_presenter'
-require_relative 'extensions/web'
+require 'sidekiq/web' unless defined?(Sidekiq::Web)
 
 module SidekiqWebRunJobs
-  # Hook into *Sidekiq::Web* Sinatra app which adds a new '/recurring-jobs' page
-
   module Web
     VIEW_PATH = File.expand_path('../../../web/views', __FILE__)
 
     def self.registered(app)
-      app.get '/run-jobs' do
+      app.get '/run_jobs' do
         # load yml file
         # run through job presenter to create @presented_jobs for the FE
       end
