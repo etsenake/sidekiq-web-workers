@@ -1,0 +1,16 @@
+<form class="form-horizontal" action="<%= root_path %>run_jobs/<%= @presented_job.escaped_name %>/create" method="post" autocomplete="off">
+  <%= csrf_tag %>
+  <a class="btn btn-default" href="<%= root_path %>run_jobs"><%= t('GoBack') %></a>
+  <div class="form-inline" style="margin-bottom: 10px;">
+      <label for="perform_in" style="min-width: 10em;">Perform In(minutes)</label>
+      <input type="text" name="perform_in" class="form-control">
+  </div>
+  <% @presented_job.method_arguments.each do |requirement, param_name|  %>
+    <div class="form-inline" style="margin-bottom: 10px;">
+      <label for="worker_parameters[<%= param_name %>]" style="min-width: 10em;"><%= param_name.to_s %></label>
+      <input type="text" name="worker_parameters[<%= param_name %>]" class="form-control" required=<%=requirement == :req %>>
+    </div>
+<% end %>
+  <br/>
+  <input name="commit" type="submit" value="<%= t('submit') %>" class="btn btn-primary" />
+</form>

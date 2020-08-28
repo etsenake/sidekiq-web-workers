@@ -1,2 +1,7 @@
 en:
-
+  web_jobs: Sidekiq Web Jobs
+  job_name: Job Name
+  job_description: Job Description
+  actions: Action
+  no_web_jobs: No workers found you can add ones in %{config_path}
+  submit: Queue Job

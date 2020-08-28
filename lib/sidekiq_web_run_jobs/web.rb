@@ -1,4 +1,4 @@
-require 'sidekiq_web_run_jobs'
+require_relative 'job_runner'
 require_relative 'job_presenter'
 require 'sidekiq/web' unless defined?(Sidekiq::Web)
 
@@ -8,15 +8,31 @@ module SidekiqWebRunJobs
 
     def self.registered(app)
       app.get '/run_jobs' do
-        # load yml file
-        # run through job presenter to create @presented_jobs for the FE
+        job_names = SidekiqWebRunJobs.config
+        @count = (params["count"] || 25).to_i
+        (@current_page, @total_size, @presented_jobs) = page("run_jobs", params["page"], @count)
+        @presented_jobs = job_names.map{ |job_name| JobPresenter.new(job_name) }.delete_if(&:empty?)
+        erb File.read(File.join(VIEW_PATH, 'web_jobs.erb'))
       end
 
       app.get '/run_jobs/:name/new' do
-        # run name through job presenter to create @presented_job
+        worker_name = CGI.unescape(params[:name])
+        @presented_job = JobPresenter.new(worker_name)
+        erb File.read(File.join(VIEW_PATH, 'new_web_jobs.erb'))
       end
 
       app.post '/run_jobs/:name/create' do
+        worker_name = CGI.unescape(params[:name])
+        params.inspect
+        if params[:perform_in].present?
+          JobRunner.execute!(
+            perform_in: params[:perform_in],
+            workers_parameters: params[:workers_parameters],
+            worker_name: worker_name
+          )
+        else
+        end
+
         # expecting {
         # 	perform_in: <minutes>| nil,
         # 	worker_parameters: {}
