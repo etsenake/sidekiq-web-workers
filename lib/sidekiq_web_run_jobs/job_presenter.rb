@@ -30,4 +30,11 @@ class JobPresenter
   def escaped_name
     CGI.escape worker_name
   end
+
+  def include?(text)
+    return false unless job_constantized
+    downcased_text = text.downcase
+    worker_name.downcase.include?(downcased_text) ||
+      description.downcase.include?(downcased_text)
+  end
 end
