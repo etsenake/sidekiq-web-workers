@@ -22,28 +22,13 @@ module SidekiqWebRunJobs
       end
 
       app.post '/run_jobs/:name/create' do
-        worker_name = CGI.unescape(params[:name])
-        params.inspect
-        if params[:perform_in].present?
-          JobRunner.execute!(
-            perform_in: params[:perform_in],
-            workers_parameters: params[:workers_parameters],
-            worker_name: worker_name
+        @worker_name = CGI.unescape(params[:name])
+        @job_id = JobRunner.execute!(
+          perform_in: params[:perform_in],
+          worker_parameters: params[:worker_parameters],
+          worker_name: @worker_name
           )
-        else
-        end
-
-        # expecting {
-        # 	perform_in: <minutes>| nil,
-        # 	worker_parameters: {}
-        # }
-        #if perform_in is nil
-        # 			- use `perform_async(build_arg_array(params[:workers_parameters])`
-        # 		- if perform_in is present
-        # 			- use `perform_in(params[:perform_in].to_i, build_arg_array(params[:workers_parameters])`
-        # 		- redirects to /admin/sidekiq/busy?poll=true if you’ve queued it to run now
-        # 		- redirect to /admin/sidekiq/scheduled if you’ve queued it to run in a particular time
-        #
+        erb File.read(File.join(VIEW_PATH, 'create_web_jobs.erb'))
       end
     end
   end

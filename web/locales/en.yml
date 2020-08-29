@@ -4,4 +4,7 @@ en:
   job_description: Job Description
   actions: Action
   no_web_jobs: No workers found you can add ones in %{config_path}
-  submit: Queue Job
+  submit: Queue Worker
+  successfully_queued: Your Worker Has been successfully enqueued
+  go_to_busy: Running workers
+  go_to_scheduled: Scheduled Workers

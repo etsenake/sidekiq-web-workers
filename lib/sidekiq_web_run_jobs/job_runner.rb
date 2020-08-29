@@ -1,19 +1,25 @@
-require 'json'
 module SidekiqWebRunJobs
-  module JobRunner
+  class JobRunner
     attr_reader :worker_name
 
-    def execute!(worker_name:, worker_parameters:, perform_in: nil)
+    def self.execute!(*args)
+      new(*args).execute!
+    end
+    
+    def initialize(worker_name:, worker_parameters:, perform_in: nil)
       @worker_name = worker_name
       @worker_parameters = worker_parameters
       @perform_in = perform_in
+    end
+
+    def execute!
       enqueue_worker
     end
 
     private def enqueue_worker
       args = build_arg_array
       if @perform_in.present?
-        worker.perform_in(@perform_in.minutes, *args)
+        worker.perform_in(@perform_in.to_i.minutes, *args)
       else
         worker.perform_async(*args)
       end

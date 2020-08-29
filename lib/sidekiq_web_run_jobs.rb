@@ -6,7 +6,6 @@ require 'sidekiq_web_run_jobs/version'
 require 'sidekiq_web_run_jobs/job_runner'
 require 'sidekiq_web_run_jobs/web'
 require 'sidekiq_web_run_jobs/extensions/web'
-require 'sidekiq_web_run_jobs/extensions/job_runner'
 
 module SidekiqWebRunJobs
   def self.config
