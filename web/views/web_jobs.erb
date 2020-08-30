@@ -35,5 +35,5 @@
       </table>
     </div>
 <% else %>
-  <div class="alert alert-success"><%= t('no_web_jobs', config_path: "#{SidekiqWebRunJobs.config_path}") %></div>
+  <div class="alert alert-success"><%= t('no_web_jobs', config_path: "#{SidekiqWebWorkers.config_path}") %></div>
 <% end %>

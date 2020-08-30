@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "sidekiq_web_run_jobs"
+require "sidekiq-web-workers"
 require 'sidekiq'
 require "sidekiq/testing"
 require 'pry'

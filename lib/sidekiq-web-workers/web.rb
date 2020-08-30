@@ -2,13 +2,13 @@ require_relative 'job_runner'
 require_relative 'job_presenter'
 require 'sidekiq/web' unless defined?(Sidekiq::Web)
 
-module SidekiqWebRunJobs
+module SidekiqWebWorkers
   module Web
     VIEW_PATH = File.expand_path('../../../web/views', __FILE__)
 
     def self.registered(app)
       app.get '/run_jobs' do
-        job_names = SidekiqWebRunJobs.jobs
+        job_names = SidekiqWebWorkers.jobs
         @count = (params["count"] || 25).to_i
 
         @presented_jobs = job_names.map{ |job_name| JobPresenter.new(job_name) }.delete_if(&:empty?)
@@ -40,7 +40,7 @@ module SidekiqWebRunJobs
         search_with = params[:substr]
         return redirect "#{root_path}run_jobs" unless search_with.present?
         @count = (params["count"] || 25).to_i
-        @presented_jobs = SidekiqWebRunJobs.search_jobs(search_with)
+        @presented_jobs = SidekiqWebWorkers.search_jobs(search_with)
         @total_size = @presented_jobs.size
 
         @current_page = params["page"].to_i > 0 ? params["page"].to_i : 1

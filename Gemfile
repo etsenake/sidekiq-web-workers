@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in sidekiq_web_run_jobs.gemspec
+# Specify your gem's dependencies in sidekiq-web-workers.gemspec
 gemspec
 
 gem "rake", "~> 12.0"

@@ -1,4 +1,4 @@
-module SidekiqWebRunJobs
+module SidekiqWebWorkers
   class JobRunner
     attr_reader :worker_name
 

@@ -1,13 +1,13 @@
-require_relative 'lib/sidekiq_web_run_jobs/version'
+require_relative 'lib/sidekiq-web-workers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sidekiq-web-workers"
-  spec.version       = SidekiqWebRunJobs::VERSION
+  spec.version       = SidekiqWebWorkers::VERSION
   spec.authors       = ["Josh Etsenake"]
   spec.email         = ["etsenake@gmail.com"]
 
   spec.summary       = %q{Lightweight Job runner from sidekiq web ui}
-  spec.homepage      = "https://github.com/etsenake/sidekiq_web_run_jobs"
+  spec.homepage      = "https://github.com/etsenake/sidekiq-web-workers"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.2.0")
 
@@ -24,9 +24,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'rspec', '~> 2'
-  spec.add_development_dependency 'pry', "~> 0.1"
+  spec.add_development_dependency 'rspec', '>= 2'
+  spec.add_development_dependency 'pry', ">= 0.1"
 
-  spec.add_dependency 'sidekiq', '~> 3'
+  spec.add_dependency 'sidekiq', '>= 3'
   spec.add_runtime_dependency 'rails', '>= 4.0'
 end

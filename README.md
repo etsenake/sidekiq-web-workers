@@ -1,6 +1,6 @@
-# SidekiqWebRunJobs
+# SidekiqWebWorkers
 
-`sidekiq_web_run_jobs` is an extension to Sidekiq that allows you to run jobs from your sidekiq web ui
+`sidekiq-web-workers` is an extension to Sidekiq that allows you to run jobs from your sidekiq web ui
 
 
 ## Installation
@@ -8,7 +8,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sidekiq_web_run_jobs'
+gem 'sidekiq-web-workers'
 ```
 
 And then execute:
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install sidekiq_web_run_jobs
+    $ gem install sidekiq-web-workers
 
 ## Usage
 
@@ -38,7 +38,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/etsenake/sidekiq_web_run_jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/etsenake/sidekiq_web_run_jobs/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/etsenake/sidekiq-web-workers. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/etsenake/sidekiq-web-workers/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
@@ -47,4 +47,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the SidekiqWebRunJobs project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/etsenake/sidekiq_web_run_jobs/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the SidekiqWebWorkers project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/etsenake/sidekiq-web-workers/blob/master/CODE_OF_CONDUCT.md).

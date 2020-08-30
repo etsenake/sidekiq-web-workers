@@ -1,3 +1,3 @@
-require 'sidekiq_web_run_jobs/job_runner'
+require 'sidekiq-web-workers/job_runner'
 
-Sidekiq::WebWorkers = SidekiqWebRunJobs
+Sidekiq::WebWorkers = SidekiqWebWorkers

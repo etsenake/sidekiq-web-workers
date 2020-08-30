@@ -1,4 +1,4 @@
-RSpec.describe SidekiqWebRunJobs::JobRunner do
+RSpec.describe SidekiqWebWorkers::JobRunner do
   it "throws an error if worker_name is not a valid class" do
     arguments = {
       worker_name: "RandomWorkerClass",
