@@ -1,8 +1,7 @@
 # SidekiqWebRunJobs
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sidekiq_web_run_jobs`. To experiment with that code, run `bin/console` for an interactive prompt.
+`sidekiq_web_run_jobs` is an extension to Sidekiq that allows you to run jobs from your sidekiq web ui
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +21,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Once you've installed the gem to add workers that will show up in the web workers section, you'll need to make a file called `sidekiq_web_jobs.yml` in your application root config folders.
+If your application is not rails standard or simply wish to change the default location the gem searches for the `sidekiq_web_jobs.yml` you can do so as follows in your `sidekiq.rb` initializer.
+
+`Sidekiq::WebWorkers.config_root = <folder you want>`
 
 ## Development
 
@@ -32,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sidekiq_web_run_jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/sidekiq_web_run_jobs/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sidekiq_web_run_jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/etsenake/sidekiq_web_run_jobs/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
