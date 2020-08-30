@@ -2,6 +2,7 @@
 
 `sidekiq-web-workers` is an extension to Sidekiq that allows you to run jobs from your sidekiq web ui
 
+[![Gem Version](https://badge.fury.io/rb/sidekiq-web-workers.svg)](https://badge.fury.io/rb/sidekiq-web-workers)
 <a href="https://codeclimate.com/github/etsenake/sidekiq-web-workers/maintainability"><img src="https://api.codeclimate.com/v1/badges/4e80e0acd08398d0df0d/maintainability" /></a>
 
 ## Installation
