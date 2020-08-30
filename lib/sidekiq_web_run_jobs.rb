@@ -9,11 +9,12 @@ require 'sidekiq_web_run_jobs/extensions/web'
 
 module SidekiqWebRunJobs
   def self.jobs
-    load_jobs
+    @config || load_jobs
   end
 
   def self.config_root=(path = Rails.root)
-    @config_root = path
+    @config_root = path if path.is_a? Pathname
+    @config_root = Pathname.new(path)
   end
 
   def self.load_jobs
@@ -25,7 +26,7 @@ module SidekiqWebRunJobs
   rescue Errno::ENOENT
     Sidekiq.logger.warn("YAML configuration file couldn't be found")
   rescue Psych::SyntaxError
-    Sidekiq.logger.warn("YAML configuration file contains invalid syntax.")
+    Sidekiq.logger.warn("YAML configuration file contains invalid syntax")
   ensure
     @config = []
   end

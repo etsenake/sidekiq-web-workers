@@ -26,7 +26,9 @@ module SidekiqWebRunJobs
     end
     private def arguments_array
       # {param_name: param_value,....}
-      @worker_parameters.values
+      @worker_parameters
+        .values # sidekiq perform_async only takes the values not named params
+        .map{|i| i.present? ? i : nil} # convert empty strings into nil
     end
 
     private def worker

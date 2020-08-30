@@ -1,17 +1,5 @@
-module Hello
-  class TestWorkerWithDescription
-    def perform(test_param, optional_param = 1)
-
-    end
-
-    def self.description
-      "This is a test description"
-    end
-  end
-end
-
 RSpec.describe JobPresenter do
-  subject { JobPresenter.new("Hello::TestWorkerWithDescription") }
+  subject { described_class.new("Hello::TestWorkerWithDescription") }
 
   describe "#description" do
     it "returns description if job class responds to description" do
@@ -21,17 +9,17 @@ RSpec.describe JobPresenter do
     it "returns empty string if job class does not respond to description" do
       class TestWorkerNoDescription
       end
-      expect(JobPresenter.new("TestWorkerNoDescription").description).to eq ""
+      expect(described_class.new("TestWorkerNoDescription").description).to eq ""
     end
 
     it "returns empty description if job class is an uninitialized constant" do
-      expect(JobPresenter.new("RandomWorkerClass").description).to eq ""
+      expect(described_class.new("RandomWorkerClass").description).to eq ""
     end
   end
 
   describe "#method_arguments" do
     it "returns an empty array if job class is an uninitialized constant" do
-      expect(JobPresenter.new("RandomWorkerClass").method_arguments).to eq []
+      expect(described_class.new("RandomWorkerClass").method_arguments).to eq []
     end
 
     it "returns the correct parameters" do
@@ -41,7 +29,7 @@ RSpec.describe JobPresenter do
     it "throws an error if job class does not have a perform method" do
       class TestWorkerWithNoPerform
       end
-      expect{JobPresenter.new("TestWorkerWithNoPerform").method_arguments}.to(
+      expect{described_class.new("TestWorkerWithNoPerform").method_arguments}.to(
         raise_error(NameError,
           "undefined method `perform' for class `TestWorkerWithNoPerform'"
         )
@@ -55,7 +43,7 @@ RSpec.describe JobPresenter do
     end
 
     it "returns nil if the job class is an uninitialized constant" do
-      expect(JobPresenter.new("RandomWorkerClass").description).to eq ""
+      expect(described_class.new("RandomWorkerClass").description).to eq ""
     end
   end
 
@@ -65,7 +53,7 @@ RSpec.describe JobPresenter do
     end
 
     it "returns true if the job class is an uninitialized constant" do
-      expect(JobPresenter.new("RandomWorkerClass").empty?).to eq true
+      expect(described_class.new("RandomWorkerClass").empty?).to eq true
     end
   end
 
@@ -78,7 +66,7 @@ RSpec.describe JobPresenter do
   describe "#include?" do
     let(:search_with) { "Test" }
     it "returns false if worker name is not a found class" do
-      expect(JobPresenter.new("RandomWorkerClass").include?(search_with)).to be false
+      expect(described_class.new("RandomWorkerClass").include?(search_with)).to be false
     end
 
     it "returns true if text is found in worker name" do
