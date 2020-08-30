@@ -28,6 +28,17 @@ If your application is not rails standard or simply wish to change the default l
 
 `Sidekiq::WebWorkers.config_root = <folder you want>`
 
+Set a description in your worker class by declaring a class method as follows: 
+```ruby
+class WorkerClass
+  def self.description
+    "this is my description"
+  end
+end    
+```
+
+![Sidekiq Web integration](https://media.giphy.com/media/ehCx2H36mzwlApmiln/giphy.gif)
+
 ## Caveats
 Because the parameters are entered through the web ui every param is a String, account for this in your code accordingly. If using the param to query activerecord conversion from string is not necessary as active record does that for you.
 Complex data structures like hashes and `perform` methods with named parameters are not supported. Note that named parameters are not supported by sidekiq itself.
