@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.2.0")
 
-  spec.metadata["allowed_push_host"] = ['https://rubygems.org', 'https://rubygems.pkg.github.com/etsenake']
+  # spec.metadata["allowed_push_host"] = ['https://rubygems.org', 'https://rubygems.pkg.github.com/etsenake']
 
   spec.metadata["homepage_uri"] = spec.homepage
 
