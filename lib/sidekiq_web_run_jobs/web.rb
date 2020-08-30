@@ -10,8 +10,13 @@ module SidekiqWebRunJobs
       app.get '/run_jobs' do
         job_names = SidekiqWebRunJobs.jobs
         @count = (params["count"] || 25).to_i
-        (@current_page, @total_size, @presented_jobs) = page("run_jobs", params["page"], @count)
+
         @presented_jobs = job_names.map{ |job_name| JobPresenter.new(job_name) }.delete_if(&:empty?)
+        @total_size = @presented_jobs.size
+        @current_page = params["page"].to_i > 0 ? params["page"].to_i : 1
+        start_idx = @count * (@current_page - 1)
+        end_idx = @count * @current_page
+        @presented_jobs = @presented_jobs[start_idx..end_idx]
         erb File.read(File.join(VIEW_PATH, 'web_jobs.erb'))
       end
 
@@ -34,10 +39,14 @@ module SidekiqWebRunJobs
       app.post '/filter/run_jobs' do
         search_with = params[:substr]
         return redirect "#{root_path}run_jobs" unless search_with.present?
-
+        @count = (params["count"] || 25).to_i
         @presented_jobs = SidekiqWebRunJobs.search_jobs(search_with)
-        @current_page = 1
-        @count = @total_size = @presented_jobs.size
+        @total_size = @presented_jobs.size
+
+        @current_page = params["page"].to_i > 0 ? params["page"].to_i : 1
+        start_idx = @count * (@current_page - 1)
+        end_idx = @count * @current_page
+        @presented_jobs = @presented_jobs[start_idx..end_idx]
         erb File.read(File.join(VIEW_PATH, 'web_jobs.erb'))
       end
     end

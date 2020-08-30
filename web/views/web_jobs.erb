@@ -4,12 +4,11 @@
   </div>
   <% if @presented_jobs.size > 0 && @total_size > @count %>
     <div class="col-sm-4">
-      <%= erb :_paging, locals: { url: "#{root_path}scheduled" } %>
+      <%= erb :_paging, locals: { url: "#{root_path}run_jobs" } %>
     </div>
   <% end %>
   <%= filtering('run_jobs') %>
 </header>
-
 <% if @presented_jobs.size > 0 %>
    <div class="table_container">
       <table class="table table-striped table-bordered">
