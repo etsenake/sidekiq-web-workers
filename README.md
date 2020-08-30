@@ -26,6 +26,10 @@ If your application is not rails standard or simply wish to change the default l
 
 `Sidekiq::WebWorkers.config_root = <folder you want>`
 
+## Caveats
+Because the parameters are entered through the web ui every param is a String, account for this in your code accordingly. If using the param to query activerecord conversion from string is not necessary as active record does that for you.
+Complex data structures like hashes and `perform` methods with named parameters are not supported. Note that named parameters are not supported by sidekiq itself.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
