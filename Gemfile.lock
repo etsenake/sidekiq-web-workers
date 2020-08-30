@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sidekiq_web_run_jobs (0.1.0)
+    sidekiq_web_run_jobs (1.0.1)
       rails (>= 5.0)
       sidekiq (>= 3)
 
