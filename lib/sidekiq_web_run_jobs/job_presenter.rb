@@ -10,6 +10,7 @@ class JobPresenter
   end
 
   def method_arguments
+    return [] unless job_constantized
     job_constantized.new.method(:perform).parameters
     #[[:opt, :param_name], [:req, :param_name]] empty if no params
     # for named parameters this can be [[:key, :param_name], [:keyreq, :param_name]]

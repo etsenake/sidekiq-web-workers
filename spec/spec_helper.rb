@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "sidekiq_web_run_jobs"
+require 'sidekiq'
+require "sidekiq/testing"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

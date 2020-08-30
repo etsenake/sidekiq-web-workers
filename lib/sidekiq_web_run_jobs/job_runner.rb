@@ -17,14 +17,14 @@ module SidekiqWebRunJobs
     end
 
     private def enqueue_worker
-      args = build_arg_array
+      args = arguments_array
       if @perform_in.present?
         worker.perform_in(@perform_in.to_i.minutes, *args)
       else
         worker.perform_async(*args)
       end
     end
-    private def build_arg_array
+    private def arguments_array
       # {param_name: param_value,....}
       @worker_parameters.values
     end
