@@ -39,12 +39,6 @@ RSpec.describe SidekiqWebWorkers do
         subject.load_jobs
       end
     end
-
-    it "sets config to empty array if config_root is nil" do
-      SidekiqWebWorkers.instance_variable_set(:@config_root, nil)
-      subject.load_jobs
-      expect(SidekiqWebWorkers.instance_variable_get(:@config)).to eq []
-    end
   end
 
   describe "#config_root" do
@@ -79,15 +73,21 @@ RSpec.describe SidekiqWebWorkers do
   end
 
   describe "#jobs" do
+    let(:jobs_list){ ["Hello::TestWorkerWithDescription"] }
+
+    before do
+      allow(SidekiqWebWorkers).to receive(:load_jobs)
+        .and_return(jobs_list)
+    end
     it "calls load_jobs if config isn't set" do
       expect(SidekiqWebWorkers).to receive(:load_jobs).once
-      SidekiqWebWorkers.jobs
+      expect(SidekiqWebWorkers.jobs).to eq(jobs_list)
     end
 
     it "does not call load_jobs if config is set" do
       SidekiqWebWorkers.load_jobs
       expect(SidekiqWebWorkers).not_to receive(:load_jobs)
-      SidekiqWebWorkers.jobs
+      expect(SidekiqWebWorkers.jobs).to eq(jobs_list)
     end
   end
 end
