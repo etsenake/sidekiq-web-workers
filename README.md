@@ -3,9 +3,9 @@
 `sidekiq-web-workers` is an extension to Sidekiq that allows you to run jobs from your sidekiq web ui
 
 [![Gem Version](https://badge.fury.io/rb/sidekiq-web-workers.svg)](https://badge.fury.io/rb/sidekiq-web-workers)
-<a href="https://codeclimate.com/github/etsenake/sidekiq-web-workers/maintainability"><img src="https://api.codeclimate.com/v1/badges/4e80e0acd08398d0df0d/maintainability" /></a>
 [![Build Status](https://travis-ci.com/etsenake/sidekiq-web-workers.svg?branch=master)](https://travis-ci.com/etsenake/sidekiq-web-workers)
-
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4e80e0acd08398d0df0d/test_coverage)](https://codeclimate.com/github/etsenake/sidekiq-web-workers/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e80e0acd08398d0df0d/maintainability)](https://codeclimate.com/github/etsenake/sidekiq-web-workers/maintainability)
 ## Installation
 
 Add this line to your application's Gemfile:
