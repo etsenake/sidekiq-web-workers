@@ -26,6 +26,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rspec', '>= 2'
   spec.add_development_dependency 'pry', ">= 0.1"
+  spec.add_development_dependency 'simplecov','0.17.1'
+
 
   spec.add_dependency 'sidekiq', '>= 3'
   spec.add_runtime_dependency 'rails', '>= 4.0'
