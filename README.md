@@ -26,6 +26,8 @@ Or install it yourself as:
 Once you've installed the gem to add workers that will show up in the web workers section, you'll need to make a file called `sidekiq_web_jobs.yml` in your application root config folders.
 If your application is not rails standard or simply wish to change the default location the gem searches for the `sidekiq_web_jobs.yml` you can do so as follows in your `sidekiq.rb` initializer.
 
+The yml file should follow yml list syntax ie `- WorkerName`
+
 `Sidekiq::WebWorkers.config_root = <folder you want>`
 
 Set a description in your worker class by declaring a class method as follows: 
@@ -35,7 +37,7 @@ class WorkerClass
     "this is my description"
   end
 end    
-```
+``` 
 
 ![Sidekiq Web integration](https://media.giphy.com/media/ehCx2H36mzwlApmiln/giphy.gif)
 
